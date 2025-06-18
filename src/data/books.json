@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "category": "Realismo mágico",
+    "image": "https://covers.openlibrary.org/b/id/10444161-L.jpg"
+  },
+  {
+    "id": 2,
+    "title": "1984",
+    "author": "George Orwell",
+    "category": "Distopía",
+    "image": "https://covers.openlibrary.org/b/id/153541-L.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Orgullo y prejuicio",
+    "author": "Jane Austen",
+    "category": "Romance",
+    "image": "https://covers.openlibrary.org/b/id/8226191-L.jpg"
+  },
+  {
+    "id": 4,
+    "title": "El señor de los anillos",
+    "author": "J.R.R. Tolkien",
+    "category": "Fantasía",
+    "image": "https://covers.openlibrary.org/b/id/10521297-L.jpg"
+  },
+  {
+    "id": 5,
+    "title": "El principito",
+    "author": "Antoine de Saint-Exupéry",
+    "category": "Fábula",
+    "image": "https://covers.openlibrary.org/b/id/10555958-L.jpg"
+  }
+]
