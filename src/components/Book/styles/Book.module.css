@@ -1,0 +1,11 @@
+.bookItem{
+    margin-bottom: 20px;
+}
+
+.book_cover {
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

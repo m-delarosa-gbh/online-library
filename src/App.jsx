@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap"
 import { BookList, HeaderNavigation } from "./layouts"
-import books from "./data/books.json";
+
+
 
 function App() {
+
+  const [books, setBooks] = useState([])
+
+  useEffect(() => {
+    fetch("/data/books.json")
+    .then((res) => res.json())
+    .then((data) => setBooks(data))
+  }, [])
+  console.log({books})
   return (
     <>
         <HeaderNavigation />
