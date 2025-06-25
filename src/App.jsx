@@ -1,7 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages"
-
-
+import { Home, BookPageDetail } from "./pages";
 
 function App() {
 
@@ -9,6 +7,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/book/:slug" element={<BookPageDetail />} />
       </Routes>
     </>
   )
