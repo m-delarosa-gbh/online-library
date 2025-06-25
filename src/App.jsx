@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap"
-import { BookList, HeaderNavigation } from "./layouts"
-
+import { Route, Routes } from "react-router-dom";
+import { Home } from "./pages"
 
 
 function App() {
@@ -13,11 +12,11 @@ function App() {
     .then((res) => res.json())
     .then((data) => setBooks(data))
   }, [])
-  console.log({books})
   return (
     <>
-        <HeaderNavigation />
-        <BookList books={books} />
+      <Routes>
+        <Route path="/" element={<Home books={books} />} />
+      </Routes>
     </>
   )
 }
