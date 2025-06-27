@@ -7,13 +7,9 @@ router.get('/', (req, res) => {
     res.send(books);
 })
 
-// app.get('/books/:id', (req, res) => {
-//     const book = books.find((u) => u.id === parseInt(req.params.id))
-//     if (book) {
-//         res.json(book)
-//     } else {
-//         res.status(404).send('User not found')
-//     }
-// })
+router.get('/:id', (req, res) => {
+  const book = books.find((b) => b.id === parseInt(req.params.id))
+  res.send(book);
+})
 
 export default router
