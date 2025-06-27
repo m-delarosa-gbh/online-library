@@ -2,10 +2,11 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import useBooks from './routes/books.router.js';
 
 const app = express();
 const port = process.env || 3000;
-import books from './data/books.json' with {type: 'json'}
+
 
 app.use(express.json()); 
 app.use(cors());
@@ -17,9 +18,8 @@ app.get('/', (req, res) => {
   res.send('Welcome to the REST API!');
 });
 
-app.use('/api/books', (req, res) => {
-    res.json(books);
-})
+app.use('/api/books', useBooks)
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
