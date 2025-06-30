@@ -12,7 +12,6 @@ export const Home = () => {
 
     return(
         <>
-            <HeaderNavigation />
             <BookList books={books} />
         </>
     )
