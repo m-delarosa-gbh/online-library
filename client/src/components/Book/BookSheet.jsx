@@ -1,5 +1,6 @@
 import {Table, Badge} from 'react-bootstrap'
 import style from "./styles/Book.module.css"
+import { BookFormat } from './BookFormats';
 
 export const BookSheet = ({book}) => {
     return(
@@ -29,9 +30,7 @@ export const BookSheet = ({book}) => {
                     <td><h5>Format:</h5> </td>
                     <td>
                         <div className='d-grid gap-2 d-md-flex justify-content-center'>
-                            <a href='#' className='btn btn-primary btn-sm'>.txt</a>
-                            <a href='#' className='btn btn-primary btn-sm'>.pdf</a>
-                            <a href='#'  className='btn btn-primary btn-sm'>.html</a>
+                            <BookFormat formats={book.formats} />
                         </div>
                     </td>
                 </tr>

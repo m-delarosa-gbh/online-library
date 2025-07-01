@@ -5,7 +5,13 @@
     "author": "Gabriel García Márquez",
     "category": "Realismo mágico",
     "image": "https://covers.openlibrary.org/b/id/10444161-L.jpg",
-    "slug" : "cien-anos-de-soledad"
+    "slug" : "cien-anos-de-soledad",
+    "formats": [
+      {
+        "html": "/books/movidick.html",
+        "txt": "/books/movidick.txt"
+    }
+    ]
   },
   {
     "id": 2,

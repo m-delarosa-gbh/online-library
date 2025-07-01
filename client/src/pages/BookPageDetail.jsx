@@ -13,7 +13,6 @@ export const BookPageDetail = () => {
     useEffect(() => {
         fetchBook(id).then(setBook)
     }, [id])
-    console.log(id)
 
     if (!book) return <div>Loading...</div>;
 
