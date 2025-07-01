@@ -1,4 +1,5 @@
 export const BookFormat = ({formats}) => {
+    if(!formats) return;
     return(
             formats.map((init) => {
             return(
