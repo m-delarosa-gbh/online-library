@@ -24,10 +24,14 @@ export const BookSheet = ({book}) => {
                     <td>
                         <h5>Category:</h5>
                     </td>
-                    <td><Badge bg="info">{book.category}</Badge></td>
+                    <td>{
+                        book.categories.map((category, index) => (
+                            <Badge key={index} bg="info" className="mx-1">{category}</Badge>
+                        ))
+                        }</td>
                 </tr>
                 <tr>
-                    <td><h5>Format:</h5> </td>
+                    <td><h5>Formats:</h5> </td>
                     <td>
                         <div className='d-grid gap-2 d-md-flex justify-content-center'>
                             <BookFormat formats={book.formats} />
