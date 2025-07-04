@@ -3,6 +3,7 @@ import style from "./styles/Book.module.css"
 import { BookFormat } from './BookFormats';
 
 export const BookSheet = ({book}) => {
+    
     return(
         <Table striped className={style.bookSheet}>
             <thead>

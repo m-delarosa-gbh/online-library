@@ -1,4 +1,4 @@
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import style from "./styles/Book.module.css"
 import { Link } from "react-router-dom";
 export const BookItem = (book) => {
@@ -14,7 +14,7 @@ export const BookItem = (book) => {
                 <Card.Text>
                     <span className="bookauthor">{book.author}</span>
                 </Card.Text>
-                <Link to={`/book/${book.id}`}>
+                <Link to={`/book/${book.book_id}`}>
                     Read Book
                 </Link>
                 
