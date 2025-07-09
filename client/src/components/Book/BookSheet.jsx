@@ -12,7 +12,7 @@ export const BookSheet = ({book}) => {
             </thead>
             <tbody className="text-center">
                 <tr>
-                    <td colSpan={2}><div className={style.book_cover} style={{backgroundImage: `url(${book.image})`}}></div></td>
+                    <td colSpan={2}><div className={style.book_cover} style={{backgroundImage: `url(${book.cover_url})`}}></div></td>
                 </tr>
                 <tr>
                     <td>

@@ -8,7 +8,7 @@ export const BookItem = (book) => {
     <div className="bookcontainer">
         <Card className={style.bookItem}>
             <Card.Header>{book.category}</Card.Header>
-                <div className={style.book_cover} style={{backgroundImage: `url(${book.image})`}}></div>
+                <div className={style.book_cover} style={{backgroundImage: `url(${book.cover_url})`}}></div>
             <Card.Body>
                 <Card.Title>{book.title}</Card.Title>
                 <Card.Text>
