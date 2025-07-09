@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to the REST API!');
 });
 
-app.use('/api/books', useBooks)
+app.use('/api/book', useBooks)
 
 
 app.listen(port, () => {
