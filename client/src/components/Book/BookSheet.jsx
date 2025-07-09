@@ -3,7 +3,6 @@ import style from "./styles/Book.module.css"
 import { BookFormat } from './BookFormats';
 
 export const BookSheet = ({book}) => {
-    
     return(
         <Table striped className={style.bookSheet}>
             <thead>
@@ -26,9 +25,10 @@ export const BookSheet = ({book}) => {
                         <h5>Category:</h5>
                     </td>
                     <td>{
-                        book.categories.map((category, index) => (
-                            <Badge key={index} bg="info" className="mx-1">{category}</Badge>
-                        ))
+                        // book.categories.map((category, index) => (
+                        //     <Badge key={index} bg="info" className="mx-1">{category}</Badge>
+                        // ))
+                        <Badge bg="info" className="mx-1">{book.category}</Badge>
                         }</td>
                 </tr>
                 <tr>
