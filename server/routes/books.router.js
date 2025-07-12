@@ -15,6 +15,76 @@ router.get('/:id', async (req, res) => {
   res.json(book.rows[0])
 })
 
+router.post('/', async (req, res) =>{
+   const {
+    title,
+    cover_url,
+    description,
+    author,
+    category,
+    formats
+  } = req.body
+
+  const authorResult = await pool.query(
+      `INSERT INTO authors (name)
+       VALUES ($1)
+       RETURNING author_id`,
+      [author]
+    );
+
+    let authorId;
+    if (authorResult.rows.length > 0) {
+      authorId = authorResult.rows[0].author_id;
+    } else {
+      // ya existía, buscarlo
+      const existingAuthor = await pool.query(
+        `SELECT author_id FROM authors WHERE name = $1`,
+        [author]
+      );
+      authorId = existingAuthor.rows[0].author_id;
+    }
+
+    // Insertar categoría si no existe
+    const categoryResult = await pool.query(
+      `INSERT INTO categories (name)
+       VALUES ($1)
+       RETURNING category_id`,
+      [category]
+    );
+
+    let categoryId;
+    if (categoryResult.rows.length > 0) {
+      categoryId = categoryResult.rows[0].category_id;
+    } else {
+      // ya existía, buscarla
+      const existingCategory = await client.query(
+        `SELECT category_id FROM categories WHERE name = $1`,
+        [category]
+      );
+      categoryId = existingCategory.rows[0].category_id;
+    }
+
+    // Inser
+
+  
+ const bookInsert = await pool.query("INSERT INTO books (title, cover_url, description, author_id, category_id) VALUES ($1, $2, $3, $4, $5) RETURNING book_id", [ title,
+    cover_url,
+    description,
+    authorId,
+    categoryId])
+
+    const bookId = bookInsert.rows[0].book_id;
+
+     for (const format of formats) {
+      await pool.query(
+        `INSERT INTO formats (book_id, type, url)
+         VALUES ($1, $2, $3)`,
+        [bookId, format.type, format.url]
+      );
+    }
+  res.send(formats)
+})
+
 // router.get('/:id', (req, res) => {
 //   const book = books.find((b) => b.id === parseInt(req.params.id))
 //   res.send(book);
@@ -24,7 +94,7 @@ router.get('/:id', async (req, res) => {
 //   SELECT books.title, authors.name AS author
 //   FROM books
 //   JOIN authors ON books.author_id = authors.author_id
-// `);
+// `); 
 // console.log(result.rows[0])
 
 export default router
