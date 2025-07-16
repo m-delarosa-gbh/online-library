@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-
   try {
     const {id} = req.params;
     const book = await pool.query("SELECT books.book_id, books.title, books.cover_url, books.description, books.published_at, authors.name AS author, categories.name AS category, json_agg(json_build_object( 'type', formats.type,'url', formats.url)) FILTER (WHERE formats.format_id IS NOT NULL) AS formats FROM books JOIN authors ON books.author_id = authors.author_id JOIN categories ON books.category_id = categories.category_id LEFT JOIN formats ON books.book_id = formats.book_id WHERE books.book_id = $1 GROUP BY books.book_id, authors.name, categories.name", [id])
@@ -41,7 +40,6 @@ router.post('/', async (req, res) =>{
   } = req.body
 
   try {
-
     let authorId = await getOrCreateAuthor(pool, author);
     let categoryId = await getOrCreateCategory(pool, category);
 
