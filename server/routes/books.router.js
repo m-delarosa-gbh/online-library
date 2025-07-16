@@ -20,6 +20,9 @@ router.get('/:id', async (req, res) => {
   try {
     const {id} = req.params;
     const book = await pool.query("SELECT books.book_id, books.title, books.cover_url, books.description, books.published_at, authors.name AS author, categories.name AS category, json_agg(json_build_object( 'type', formats.type,'url', formats.url)) FILTER (WHERE formats.format_id IS NOT NULL) AS formats FROM books JOIN authors ON books.author_id = authors.author_id JOIN categories ON books.category_id = categories.category_id LEFT JOIN formats ON books.book_id = formats.book_id WHERE books.book_id = $1 GROUP BY books.book_id, authors.name, categories.name", [id])
+    if(book.rows.length === 0){
+      res.send("sorry this book doesn't exist")
+    }
     res.json(book.rows[0])
     
   } catch (error) {
@@ -66,6 +69,23 @@ router.post('/', async (req, res) =>{
         console.log(error)
         res.status(500).json({error: 'Error trying to insert a book'})
     }
+})
+
+router.put('/:id', async(req, res) => {
+
+})
+
+router.delete('/:id', async(req, res) => {
+  try {
+    const {id} = req.params;
+    pool.query(`DELETE FROM formats WHERE book_id = $1`, [id])
+    pool.query(`DELETE FROM books WHERE book_id = $1`, [id]);
+    res.send("book deleted!")
+
+  } catch(error) {
+    console(error)
+    res.status(500).json({error:"Error trying to delete book"})
+  }
 })
 
 export default router
