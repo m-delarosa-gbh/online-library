@@ -72,7 +72,15 @@ router.post('/', async (req, res) =>{
 })
 
 router.put('/:id', async(req, res) => {
-
+  try {
+    const {id} =  req.params;
+    const {title, description} = req.body;
+    pool.query(`UPDATE books SET name=$1, description = $2 WHERE book_id = $3`, [title, description, id])
+    res.send(`Book modified with ID: ${id}`);
+  } catch (error) {
+      res.send('Error trying to update book')
+      console.log(error)
+  }
 })
 
 router.delete('/:id', async(req, res) => {
