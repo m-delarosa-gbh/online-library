@@ -25,49 +25,37 @@ router.post('/', async (req, res) =>{
     formats
   } = req.body
 
-  const authorResult = await pool.query(
-      `INSERT INTO authors (name)
-       VALUES ($1)
-       RETURNING author_id`,
-      [author]
-    );
-
     let authorId;
-    if (authorResult.rows.length > 0) {
-      authorId = authorResult.rows[0].author_id;
+    let categoryId;
+
+    const existingAuthor = await pool.query(`SELECT author_id FROM authors WHERE name = $1`, [author]);
+    
+    if(existingAuthor.rows.length > 0) {
+      authorId = existingAuthor.rows[0].author_id;
     } else {
-      // ya existía, buscarlo
-      const existingAuthor = await pool.query(
-        `SELECT author_id FROM authors WHERE name = $1`,
+       const authorResult = await pool.query(
+        `INSERT INTO authors (name)
+        VALUES ($1)
+        RETURNING author_id`,
         [author]
       );
-      authorId = existingAuthor.rows[0].author_id;
+      authorId = authorResult.rows[0].author_id
     }
 
-    // Insertar categoría si no existe
-    const categoryResult = await pool.query(
-      `INSERT INTO categories (name)
-       VALUES ($1)
-       RETURNING category_id`,
-      [category]
-    );
+    const existingCategory = await pool.query(`SELECT category_id FROM categories WHERE name = $1`, [category])
 
-    let categoryId;
-    if (categoryResult.rows.length > 0) {
-      categoryId = categoryResult.rows[0].category_id;
+    if(existingCategory.rows.length > 0){
+      categoryId = existingCategory.rows[0].category_id
     } else {
-      // ya existía, buscarla
-      const existingCategory = await client.query(
-        `SELECT category_id FROM categories WHERE name = $1`,
-        [category]
+      const categoryResult = await pool.query(
+        `INSERT INTO categories (name)
+        VALUES ($1)
+        RETURNING category_id`, [category]
       );
-      categoryId = existingCategory.rows[0].category_id;
+      categoryId = categoryResult.rows[0].category_id
     }
-
-    // Inser
-
   
- const bookInsert = await pool.query("INSERT INTO books (title, cover_url, description, author_id, category_id) VALUES ($1, $2, $3, $4, $5) RETURNING book_id", [ title,
+ const bookInsert = await pool.query("INSERT INTO books (title, cover_url, description, author_id, category_id) VALUES ($1, $2, $3, $4, $5) RETURNING book_id", [title,
     cover_url,
     description,
     authorId,
@@ -82,19 +70,7 @@ router.post('/', async (req, res) =>{
         [bookId, format.type, format.url]
       );
     }
-  res.send(formats)
+    res.send("Book added correctly")
 })
-
-// router.get('/:id', (req, res) => {
-//   const book = books.find((b) => b.id === parseInt(req.params.id))
-//   res.send(book);
-// })
-
-// const result = await pool.query(`
-//   SELECT books.title, authors.name AS author
-//   FROM books
-//   JOIN authors ON books.author_id = authors.author_id
-// `); 
-// console.log(result.rows[0])
 
 export default router
