@@ -9,7 +9,7 @@ This project is a practice app to build a REST API of book. This project is divi
 + Postgres as DB
 + React for the frontend
 + node-postgres (pg) for database configuration
-+ postgres-node-migration for migration
++ postgres-node-migration for migration and seeder
 
 # Getting Started
 Before start, you should have installed and configured postgres db on your computer.
