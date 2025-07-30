@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Authors } from "./Authors";
+import { Categories } from "./Categories";
 
 @Entity()
 export class Books{
@@ -8,8 +10,18 @@ export class Books{
     @Column()
     title: string
 
-    @Column()
-    author_id: number
+    @OneToOne(() => Authors, {
+        cascade: true
+    })
+
+    @JoinColumn({name:"author_id"})
+    author_id: Authors
+
+    @OneToOne(() => Categories, {
+        cascade: true
+    })
+    @JoinColumn({name:"category_id"})
+    category_id: Categories;
 
     @Column()
     cover_url: string
