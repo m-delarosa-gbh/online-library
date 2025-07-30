@@ -13,4 +13,5 @@ export const AppDataSource = new DataSource({
     entities:[Authors, Categories, Books, Formats],
     synchronize: true,
     logging: false,
+    migrations: ["src/migration/**/*.ts"]
 })

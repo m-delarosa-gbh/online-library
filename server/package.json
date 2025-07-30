@@ -5,8 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
-    "migrate": "node-pg-migrate",
-    "create-db": "psql -U postgres < ./schema/bookschema.sql"
+    "create-db": "psql -U postgres < ./schema/bookschema.sql",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration:create": "typeorm migration:create"
   },
   "author": "",
   "license": "ISC",
