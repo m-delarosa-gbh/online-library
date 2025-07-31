@@ -1,17 +1,19 @@
-import {DataSource} from "typeorm";
+import {DataSource, DataSourceOptions} from "typeorm";
 import 'dotenv/config';
 import { Authors, Books, Categories, Formats } from "../entity/index.ts";
+import { SeederOptions } from "typeorm-extension";
 
-
-export const AppDataSource = new DataSource({
+const options: DataSourceOptions & SeederOptions = {
     type: "postgres",
     username: process.env.DB_USER || "postgres",
     password: process.env.DB_PASS,
     host: process.env.DB_HOST || "localhost",
     port: Number(process.env.DB_PORT) || 5432,
     database: process.env.DB_NAME,
-    entities:[Authors, Categories, Books, Formats],
+    entities: [Authors, Categories, Books, Formats],
     synchronize: true,
     logging: false,
-    migrations: ["src/migration/**/*.ts"]
-})
+    migrations: ["src/migration/**/*.ts"],
+    seeds: ["src/seeds/mainSeeder.ts"],
+}
+export const AppDataSource = new DataSource(options);
