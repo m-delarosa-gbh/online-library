@@ -14,7 +14,6 @@ export class BookServices{
             author: book.author?.name ?? null,
             category: book.category?.name ?? null,
           }));
-        console.log(result)
         return result;
     }
 

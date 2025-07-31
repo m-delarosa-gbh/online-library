@@ -4,7 +4,6 @@ import { Request, Response } from "express";
 export class BookController{
     static async all(request: Request, response: Response){
         const data = await bookRepository.findAll();
-        console.log("data", data);
         return response.status(200).send(data)
     }
 
