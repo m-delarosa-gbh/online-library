@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class CreateBooksTable1753886398773 implements MigrationInterface {
 
@@ -41,6 +41,18 @@ export class CreateBooksTable1753886398773 implements MigrationInterface {
                 },
                 
             ]
+        }));
+        await queryRunner.createForeignKey("books", new TableForeignKey({
+            columnNames: ["author_id"],
+            referencedColumnNames: ["author_id"],
+            referencedTableName: "authors",
+            onDelete: "CASCADE",
+        }));
+        await queryRunner.createForeignKey("books", new TableForeignKey({
+            columnNames: ["category_id"],
+            referencedColumnNames: ["category_id"],
+            referencedTableName: "categories",
+            onDelete: "CASCADE",
         }));
     }
 
