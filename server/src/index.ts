@@ -4,6 +4,7 @@ import cors from 'cors';
 import 'dotenv/config';
 // import useBooks from './routes/books.router.js';
 import  {AppDataSource} from "./conf/data-source.ts";
+import bookRouter from './router/bookRouter.ts';
 
 const app = express();
 const port = process.env || 3000;
@@ -23,12 +24,10 @@ AppDataSource.initialize()
       app.get('/', (req: any, res: { send: (arg0: string) => void; }) => {
     res.send('Welcome to the REST API!');
   });
-
-  // app.use('/api/book', useBooks)
-
-
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
     });
+
+    app.use('/api/book', bookRouter)
   })
 .catch((error: any) => console.log(error))
