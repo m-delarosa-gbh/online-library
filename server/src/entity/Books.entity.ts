@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Authors } from "./Authors.entity";
 import { Categories } from "./Categories.entity";
+import { Pages } from "./Pages.entity";
 
 @Entity()
 export class Books{
@@ -26,4 +27,7 @@ export class Books{
 
     @Column()
     published_at: Date
+
+    @OneToMany(() => Pages, (page) => page.book)
+    pages: Pages[];
 } 
