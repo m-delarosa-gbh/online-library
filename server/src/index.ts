@@ -8,7 +8,7 @@ import bookRouter from './router/bookRouter.ts';
 import pageRouter from './router/pageRouter.ts';
 
 const app = express();
-const port = process.env || 3000;
+const port = process.env.PORT || 3000;
 
 
 app.use(express.json()); 
