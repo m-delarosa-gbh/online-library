@@ -1,6 +1,6 @@
 import {DataSource, DataSourceOptions} from "typeorm";
 import 'dotenv/config';
-import { Authors, Books, Categories, Formats } from "../entity/index.ts";
+import { Authors, Books, Categories, Pages } from "../entity/index.ts";
 import { SeederOptions } from "typeorm-extension";
 
 const options: DataSourceOptions & SeederOptions = {
@@ -10,7 +10,7 @@ const options: DataSourceOptions & SeederOptions = {
     host: process.env.DB_HOST || "localhost",
     port: Number(process.env.DB_PORT) || 5432,
     database: process.env.DB_NAME,
-    entities: [Authors, Categories, Books, Formats],
+    entities: [Authors, Categories, Books, Pages],
     synchronize: true,
     logging: false,
     migrations: ["src/migration/**/*.ts"],

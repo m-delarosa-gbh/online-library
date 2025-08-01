@@ -21,12 +21,12 @@ export default class BooksSeeds implements Seeder {
             }
         ]
         for (const booksOfData of books) {
-            const author_id = await authors.findOneBy({name: booksOfData.author});
-            const category_id = await categories.findOneBy({name: booksOfData.category});
-            if (!author_id || !category_id) {
+            const author = await authors.findOneBy({name: booksOfData.author});
+            const category = await categories.findOneBy({name: booksOfData.category});
+            if (!author || !category) {
                 throw new Error("Author or category not found");
             }
-            await bookRepository.save({...booksOfData, author_id, category_id});
+            await bookRepository.save({...booksOfData, author, category});
         }
     }
 }
