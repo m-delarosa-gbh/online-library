@@ -1,4 +1,4 @@
-export * from "./Authors.ts";
-export * from "./Categories.ts";
+export * from "./Authors.entity.ts";
+export * from "./Categories.entity.ts";
 export * from "./Formats.ts";
-export * from "./Books.ts";
+export * from "./Books.entity.ts";

@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Authors } from "./Authors";
-import { Categories } from "./Categories";
+import { Authors } from "./Authors.entity";
+import { Categories } from "./Categories.entity";
 
 @Entity()
 export class Books{
