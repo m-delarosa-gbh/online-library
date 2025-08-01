@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Books, Pages } from "../entity";
+import { Books, Pages } from "../../entity";
 import { Seeder } from "typeorm-extension";
 
 export default class PageSeed implements Seeder {

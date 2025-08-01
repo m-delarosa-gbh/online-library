@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 // import useBooks from './routes/books.router.js';
-import  {AppDataSource} from "./conf/data-source.ts";
+import  {AppDataSource} from "./database/conf/data-source.ts";
 import bookRouter from './router/bookRouter.ts';
 import pageRouter from './router/pageRouter.ts';
 

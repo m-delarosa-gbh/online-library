@@ -1,4 +1,4 @@
-import { pageRepository } from "../repository";
+import { pageRepository } from "../database/repository";
 import { Request, Response } from "express";
 
 export class PageController {

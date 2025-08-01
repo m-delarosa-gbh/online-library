@@ -1,4 +1,4 @@
-import { bookRepository } from "../repository";
+import { bookRepository } from "../database/repository";
 import { Request, Response } from "express";
 
 export class BookController{

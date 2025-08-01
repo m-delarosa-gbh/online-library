@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 import { Seeder } from "typeorm-extension";
-import { Categories } from "../entity";
+import { Categories } from "../../entity";
 
 export default class CategoriesSeeds implements Seeder {
     async run (dataSource: DataSource): Promise<void> {

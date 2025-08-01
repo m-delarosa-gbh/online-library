@@ -1,6 +1,6 @@
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 import { DataSource } from "typeorm";
-import { Authors } from "../entity/index.ts";
+import { Authors } from "../../entity/index.ts";
 
 export default class AuthorSeed implements Seeder {
     async run(dataSource: DataSource): Promise<void> {

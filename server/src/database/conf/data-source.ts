@@ -1,6 +1,6 @@
 import {DataSource, DataSourceOptions} from "typeorm";
 import 'dotenv/config';
-import { Authors, Books, Categories, Pages } from "../entity/index.ts";
+import { Authors, Books, Categories, Pages } from "../../entity/index.ts";
 import { SeederOptions } from "typeorm-extension";
 
 const options: DataSourceOptions & SeederOptions = {

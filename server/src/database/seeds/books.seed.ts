@@ -1,6 +1,6 @@
 import { Seeder } from "typeorm-extension";
 import { DataSource } from "typeorm";
-import { Authors, Books, Categories } from "../entity";
+import { Authors, Books, Categories } from "../../entity";
 
 export default class BooksSeeds implements Seeder {
     async run(dataSource: DataSource): Promise<void> {
