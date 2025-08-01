@@ -18,7 +18,7 @@ export class BookServices{
     }
 
     async findOne(book_id:number){
-        const book = await this.bookRepository.findOne({where: {book_id}, relations: ['author', 'category']})
+        const book = await this.bookRepository.findOne({where: {book_id}, relations: ['author', 'category', 'pages']})
         const result = {
             book_id: book?.book_id,
             title: book?.title,
@@ -27,6 +27,10 @@ export class BookServices{
             published_at: book?.published_at,
             author: book?.author?.name ?? null,
             category: book?.category?.name ?? null,
+            pages: book?.pages?.map((page) => ({
+                page_number: page.page_number,
+                content: page.content,
+            })),
           };
         return result;
     }

@@ -5,6 +5,7 @@ import 'dotenv/config';
 // import useBooks from './routes/books.router.js';
 import  {AppDataSource} from "./conf/data-source.ts";
 import bookRouter from './router/bookRouter.ts';
+import pageRouter from './router/pageRouter.ts';
 
 const app = express();
 const port = process.env || 3000;
@@ -29,5 +30,6 @@ AppDataSource.initialize()
     });
 
     app.use('/api/book', bookRouter)
+    app.use('/api/book', pageRouter)
   })
 .catch((error: any) => console.log(error))
