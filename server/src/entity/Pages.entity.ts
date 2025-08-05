@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import { Books } from "./Books.entity";
-import { Categories } from "./Categories.entity";
+import { Formats } from "./Formats.entity";
 
 @Entity()
 export class Pages {
@@ -16,4 +16,8 @@ export class Pages {
 
     @Column()
     content: string;
+
+    @ManyToOne(() => Formats, (format) => format.pages, {cascade: true})
+    @JoinColumn({name: "format_id"})
+    format: Formats
 }

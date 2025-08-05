@@ -8,8 +8,8 @@
     "create-db": "psql -U postgres < ./schema/bookschema.sql",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:create": "typeorm migration:create",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run --dataSource src/conf/data-source.ts",
-    "seed": "ts-node ./node_modules/typeorm-extension/bin/cli.cjs seed:run  -d src/conf/data-source.ts"
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run --dataSource src/database/conf/data-source.ts",
+    "seed": "ts-node ./node_modules/typeorm-extension/bin/cli.cjs seed:run  -d src/database/conf/data-source.ts"
   },
   "author": "",
   "license": "ISC",
