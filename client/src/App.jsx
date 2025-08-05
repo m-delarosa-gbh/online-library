@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, BookPageDetail } from "./pages";
+import { Home, BookPageDetail, BookContentPage } from "./pages";
 import { HeaderNavigation } from "./layouts";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/book/:id" element={<BookPageDetail />} />
+        <Route path="/book/:id/page/:numberPage" element={<BookContentPage />} />
       </Routes>
     </>
   )
