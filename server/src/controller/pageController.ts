@@ -6,14 +6,16 @@ export class PageController {
     static async findPage(request: Request, response: Response){
         const book_id = Number(request.params.id);
         const page_number = Number(request.params.page_number);
-        const format = request.query.format as "html" | "text";
+        const { format } = request.query
+        const formatString = String(format)
+        console.log(formatString)
         
         
         if(isNaN(book_id) || isNaN(page_number)){
             
             return response.status(400).send({message: 'Invalid book id or page number'})
         }
-        const page = await pageRepository.findPage(book_id, page_number)
+        const page = await pageRepository.findPage(book_id, page_number, formatString )
         
         if(page.page_number === undefined || page.content === undefined){
             return response.status(404).send({message: 'Page not found'})
