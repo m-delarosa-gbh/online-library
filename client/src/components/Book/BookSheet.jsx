@@ -1,8 +1,11 @@
 import {Table, Badge} from 'react-bootstrap'
 import style from "./styles/Book.module.css"
 import { BookFormat } from './BookFormats';
+import { useParams } from "react-router-dom";
 
 export const BookSheet = ({book}) => {
+    const {id} = useParams();
+
     return(
         <Table striped className={style.bookSheet}>
             <thead>
@@ -35,7 +38,7 @@ export const BookSheet = ({book}) => {
                     <td><h5>Formats:</h5> </td>
                     <td>
                         <div className='d-grid gap-2 d-md-flex justify-content-center'>
-                            <BookFormat formats={book.formats} />
+                            <BookFormat bookId={id} />
                         </div>
                     </td>
                 </tr>

@@ -19,6 +19,7 @@ export async function fetchPage(id, numberPage = 2, format) {
     
     if(contentType.includes("text/html")) {
         const html = await response.text()
+        console.log(html)
         return html;
     } else if(contentType.includes("text/plain")){
         const text = await response.text();

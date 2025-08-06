@@ -1,20 +1,20 @@
 import { useEffect, useState} from "react";
 import { fetchPage } from "../services/api";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const BookContentPage = () => {
-    const [page, setPage] = useState(null)
+    const [content, setContent] = useState(null)
+    const [format, setFormat] = useState("text");
 
     const {id, numberPage} = useParams();
-    const format = ""
 
 
     useEffect(() => {
         fetchPage(id, numberPage, format)
-        .then(setPage)
+        .then(setContent)
     },[id, numberPage, format])
 
-    console.log("pages", page)
-    return <div id="page-content">{page}</div>
+    console.log("pages", content)
+    return <div id="page-content">{content}</div>
     
 }
