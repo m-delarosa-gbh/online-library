@@ -10,7 +10,7 @@ export const BookContentPage = () => {
 
 
     useEffect(() => {
-        fetchPage(id, numberPage, format)
+        fetchPage(id, Number(numberPage), format)
         .then(setContent)
     },[id, numberPage, format])
 

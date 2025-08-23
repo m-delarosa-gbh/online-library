@@ -1,6 +1,6 @@
 import { Container, Navbar, Nav, Col, Row } from "react-bootstrap";
 
-export const HeaderNavigation = () => {
+export const HeaderNavigation: React.FC = () => {
     return(
        <Navbar bg="light" data-bs-theme="light">
         <Container>

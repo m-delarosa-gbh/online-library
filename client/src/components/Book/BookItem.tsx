@@ -1,6 +1,7 @@
+import style from "./styles/Book.module.css";
 import { Card } from "react-bootstrap";
-import style from "./styles/Book.module.css"
 import { Link } from "react-router-dom";
+
 export const BookItem = (book) => {
     
     return(
