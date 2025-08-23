@@ -1,4 +1,7 @@
-export const BookFormat = ({bookId}) => {
+import { FC } from "react"
+import { BookFormatsProps } from "./BookFromats.types"
+
+export const BookFormat:FC<BookFormatsProps> = ({bookId}) => {
 
     //  book.formats.map((b)=> {console.log(b.type)})
     return(
