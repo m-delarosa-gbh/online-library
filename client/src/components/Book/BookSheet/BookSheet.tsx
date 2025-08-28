@@ -1,9 +1,11 @@
 import {Table, Badge} from 'react-bootstrap'
 import style from "./styles/Book.module.css"
-import { BookFormat } from './BookFormats/BookFormats';
+import { BookFormat } from '../BookFormats';
 import { useParams } from "react-router-dom";
+import { FC } from 'react';
+import { Book } from '../types/book';
 
-export const BookSheet = ({book}) => {
+export const BookSheet:FC<Book> = (book) => {
     const {id} = useParams();
 
     return(
