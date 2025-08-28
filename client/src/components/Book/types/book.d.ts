@@ -5,3 +5,7 @@ export interface Book {
      author: string, 
      book_id: number
 }
+
+export interface BookListProps {
+    books:Book[]
+}
