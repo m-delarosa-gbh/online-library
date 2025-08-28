@@ -1,22 +1,24 @@
+import { Book } from "../types/book";
+import { Page } from "../types/page";
 import { apiRequest } from "./request";
 
 const BASE_URL = "http://localhost:3000/api"
 
-export async function fetchBooks() {
-    return apiRequest(`${BASE_URL}/book`)
+export async function fetchBooks():Promise<Book[]> {
+    return apiRequest<Book[]>(`${BASE_URL}/book`)
 }
 
-export async function fetchBook(id) {
+export async function fetchBook(id: string | number):Promise<Book> {
     return apiRequest(`${BASE_URL}/book/${id}`)
 }
 
-export async function fetchPage(id, numberPage = 2, format) {
+export async function fetchPage(id: string | number, numberPage:number = 2, format:string):Promise<string | Page> {
     const url = `${BASE_URL}/book/${id}/page/${numberPage}?format=${format}`
-    const data =  apiRequest(url)
+    const data =  apiRequest<string | Page>(url)
 
-    if (typeof(data) === 'object'){
-        return data.content || '[contenido vacio]'
-    }
+    // if (typeof(data) === 'object'){
+    //     return data.content || '[contenido vacio]'
+    // }
 
     return data
 }

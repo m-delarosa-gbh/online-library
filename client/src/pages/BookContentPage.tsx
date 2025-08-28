@@ -1,10 +1,10 @@
-import { useEffect, useState} from "react";
+import { FC, useEffect, useState} from "react";
 import { fetchPage } from "../services/api";
 import { useParams } from "react-router-dom";
 
-export const BookContentPage = () => {
+export const BookContentPage:FC = () => {
     const [content, setContent] = useState(null)
-    const [format, setFormat] = useState("text");
+    const [format, _] = useState("text");
 
     const {id, numberPage} = useParams();
 

@@ -1,4 +1,4 @@
-export async function apiRequest(url, options = {}) {
+export async function apiRequest<T>(url: string, options: RequestInit = {}):Promise<T> {
     try {
         const response = await fetch(url, options)
         if (!response.ok) {
@@ -8,11 +8,11 @@ export async function apiRequest(url, options = {}) {
         const contentType = response.headers.get("Content-Type") || "";
 
         if (contentType.includes("application/json")) {
-            return await response.json();
+            return (await response.json()) as T;
         } else if (contentType.includes("text/html") || contentType.includes("text/plain")) {
-            return await response.text();
+            return (await response.text()) as T;
         } else {
-            return response; // fallback
+            return response as unknown as T; // fallback
         }
 
     } catch (error) {

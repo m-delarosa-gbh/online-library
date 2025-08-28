@@ -5,9 +5,10 @@ import { fetchBook } from "../services/api"
 import { Container, Row, Col} from "react-bootstrap"
 
 import { BookSheet } from "../components/Book"
+import { Book } from "../types/book"
 
 export const BookPageDetail = () => {
-    const [book, setBook] = useState(null)
+    const [book, setBook] = useState<Book | null>(null)
     const { id }= useParams();
     
     useEffect(() => {

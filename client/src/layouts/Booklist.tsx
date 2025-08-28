@@ -1,7 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { BookItem } from "../components/Book";
 import { FC } from "react";
-import { BookListProps } from "../components/Book/types/book";
+import { BookListProps } from "../types/book";
 
 export const BookList:FC<BookListProps> = ({books}) =>{
     return(

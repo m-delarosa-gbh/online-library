@@ -1,8 +1,8 @@
 import { FC } from "react";
-import style from "./styles/Book.module.css";
+import style from "./BookItem.module.css";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Book } from "../types/book";
+import { Book } from "../../../types/book";
 
 export const BookItem:FC<Book> = (book) => {
     
